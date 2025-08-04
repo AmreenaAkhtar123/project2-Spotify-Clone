@@ -196,6 +196,28 @@ body {
     width: 70vw;
     padding: 12px;
     border-radius: 5px;
+    height: 35px;
+}
+.seekbar{
+    height: 1px;
+    width: 98.5%;
+    border-radius: 10px;
+    border: 2px solid white;
+    position: absolute;
+    bottom: 0px;
+    left: 3px;
+    margin: 4px;
+    background-color: white;
+}
+.circle{
+    width: 13px;
+    height: 13px;
+    border-radius: 13px;
+    background-color: white;
+    position: relative;
+    bottom: 5px;
+    left: 0%;
+    transition: left0.5s;
 }
 
 .songbuttons {
@@ -243,4 +265,31 @@ body {
     padding: 12px ;
     
 }
+
+.songbuttons img{
+    cursor: pointer;
+}
+
+
+.aboveBar{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    
+}
+
+.songInfo{
+    position: absolute;
+    left: 32px;
+    top: 6px;
+}
+
+.songTime{
+    position: absolute;
+    right: 32px;
+    top: 6px;
+}
+
+
+
 

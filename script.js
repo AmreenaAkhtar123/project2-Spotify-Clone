@@ -1,4 +1,5 @@
 console.log("Lets start javascript");
+let currentSong = new Audio();
 
 async function getSongs() {
 
@@ -16,11 +17,23 @@ async function getSongs() {
     }
     return songs
 }
+
+const playMusic = (track) => {
+    // let audio = new Audio("/songs/" + track)
+    currentSong.src = "/songs/" + track
+    currentSong.play()
+    playSong.src = "assets/pause.svg"
+
+    document.querySelector(".songInfo").innerHTML = track
+
+    document.querySelector(".songTime").innerHTML = "00:00/00:00"
+}
 async function main() {
+    
     ////For getting the list of all the songs
     let songs = await getSongs()
     console.log(songs);
-
+    ///Show all the songs in the play list....
     let songUL = document.querySelector(".songlist").getElementsByTagName("ul")[0]
     for (const song of songs) {
         songUL.innerHTML = songUL.innerHTML + `<li><img class="invert" src="assets/music.svg" alt="">
@@ -37,12 +50,32 @@ async function main() {
                             </div>
                             
                         </li>`;
-        
+
     }
 
-    ///To play the first song
-    var audio = new Audio(songs[0]);
-    audio.play();
+    //Attach an event listener to each song 
+    Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach(e => {
+        e.addEventListener("click", element => {
+            console.log(e.querySelector(".info").firstElementChild.innerHTML);
+            playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
+        })
+
+    });
+
+    //Attact an event listener to previous, play and next button////
+
+    playSong.addEventListener("click", ()=>{
+        if (currentSong.paused){
+            currentSong.play()
+            playSong.src = "assets/pause.svg"
+        }
+        else{
+            currentSong.pause()
+            playSong.src = "assets/play.svg"
+        }
+    } )
+
+
 }
 
 main()
