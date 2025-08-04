@@ -204,10 +204,11 @@ body {
     border-radius: 10px;
     border: 2px solid white;
     position: absolute;
-    bottom: 0px;
+    bottom: 2px;
     left: 3px;
     margin: 4px;
     background-color: white;
+    cursor: pointer;
 }
 .circle{
     width: 13px;
@@ -215,7 +216,7 @@ body {
     border-radius: 13px;
     background-color: white;
     position: relative;
-    bottom: 5px;
+    bottom: 6px;
     left: 0%;
     transition: left0.5s;
 }
