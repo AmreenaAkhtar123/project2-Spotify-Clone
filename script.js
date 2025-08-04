@@ -112,6 +112,16 @@ async function main() {
 
     })
 
+    /////Adding an event listener to the hamburger
+    document.querySelector(".hamburger").addEventListener("click", ()=>{
+        document.querySelector(".left").style.left = "0"
+    })
+
+    ///Adding the event listener to the close
+    document.querySelector(".close").addEventListener("click", ()=>{
+        document.querySelector(".left").style.left = "-120%"
+    })
+
 }
 
 main()

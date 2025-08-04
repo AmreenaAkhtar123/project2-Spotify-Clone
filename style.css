@@ -22,15 +22,22 @@ body {
 .right {
     width: 75vw;
     margin: 16px 0;
-    max-height: 100vh;
+    min-height: 100vh;
     ;
     position: relative;
+}
 
+.logo {
+    display: flex;
+    justify-content: space-between;
+}
 
+.close {
+    display: none;
 }
 
 .home-logo {
-    width: 24px;
+    width: 100px;
 }
 
 .home ul li {
@@ -103,8 +110,8 @@ body {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    overflow-y: scroll;
-    max-height: 70vh;
+    overflow-y: auto;
+    max-height: 65vh;
 }
 
 .card {
@@ -196,9 +203,10 @@ body {
     width: 70vw;
     padding: 12px;
     border-radius: 5px;
-    height: 35px;
+    min-height: 35px;
 }
-.seekbar{
+
+.seekbar {
     height: 1px;
     width: 98.5%;
     border-radius: 10px;
@@ -210,7 +218,8 @@ body {
     background-color: white;
     cursor: pointer;
 }
-.circle{
+
+.circle {
     width: 13px;
     height: 13px;
     border-radius: 13px;
@@ -227,17 +236,17 @@ body {
     gap: 30px;
 }
 
-.songlist{
+.songlist {
     height: 430px;
     overflow: auto;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
 }
 
-.songlist ul{
+.songlist ul {
     padding: 0 12px;
 }
 
-.songlist ul li{
+.songlist ul li {
     list-style: decimal;
     display: flex;
     gap: 12px;
@@ -249,48 +258,92 @@ body {
     border-radius: 5px;
     justify-content: space-between;
 }
-.songlist info{
+
+.songlist info {
     font-size: 13px;
     width: 344px;
-} 
+}
 
-.playNow{
+.playNow {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.playNow span{
+.playNow span {
     font-size: 15px;
     width: 64px;
-    padding: 12px ;
-    
+    padding: 12px;
+
 }
 
-.songbuttons img{
+.songbuttons img {
     cursor: pointer;
 }
 
 
-.aboveBar{
+.aboveBar {
     display: flex;
     justify-content: center;
     position: relative;
-    
+
 }
 
-.songInfo{
+.songInfo {
     position: absolute;
     left: 32px;
     top: 6px;
 }
 
-.songTime{
+.songTime {
     position: absolute;
     right: 32px;
     top: 6px;
 }
 
+.hamburger {
+    display: none;
+}
 
+.hamburgerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 13px;
+}
 
+@media (max-width: 1400px) {
+    .left {
+        position: absolute;
+        left: -120%;
+        transition: all .3s;
+        z-index: 1;
+        width: 370px;
+        background-color: black;
+    }
 
+    .right {
+        width: 100vw;
+    }
+
+    .playbar {
+        width: 88vw;
+    }
+
+    .seekbar {
+        width: 95%;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .close {
+        display: block;
+    }
+
+    .buttons {
+        display: flex;
+    }
+
+}
