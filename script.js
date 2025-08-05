@@ -168,12 +168,42 @@ async function main() {
     });
 
     //////////Adding the functionality of mute and unmute volume
-    document.querySelector(".volumebtn").addEventListener("click", () => {
-        currentSong.muted = !currentSong.muted;
+    ////////// Volume slider, mute toggle and dynamic fill ////////
+const volumeSlider = document.getElementById("volumeSlider");
+const volumeIcon = document.querySelector(".volumebtn");
 
-        // Optional: Change the icon or text of the button
-        document.querySelector(".volumebtn").src = currentSong.muted ? "assets/mute.svg" : "assets/volume.svg";
-    });
+// Handle volume input
+volumeSlider.addEventListener("input", () => {
+    currentSong.volume = volumeSlider.value;
+
+    // Update background fill color
+    const val = volumeSlider.value * 100;
+    volumeSlider.style.background = `linear-gradient(to right, #9a8c98 ${val}%, #white ${val}%)`;
+
+    // Change icon based on volume
+    if (currentSong.volume == 0) {
+        currentSong.muted = true;
+        volumeIcon.src = "assets/mute.svg";
+    } else {
+        currentSong.muted = false;
+        volumeIcon.src = "assets/volume.svg";
+    }
+});
+
+// Toggle mute/unmute
+volumeIcon.addEventListener("click", () => {
+    currentSong.muted = !currentSong.muted;
+
+    volumeIcon.src = currentSong.muted ? "assets/mute.svg" : "assets/volume.svg";
+
+    // Visually reflect muted state
+    volumeSlider.value = currentSong.muted ? 0 : currentSong.volume || 1;
+    const val = volumeSlider.value * 100;
+    volumeSlider.style.background = `linear-gradient(to right, #9a8c98 ${val}%, #ddd ${val}%)`;
+});
+
+
+
 
 
 
