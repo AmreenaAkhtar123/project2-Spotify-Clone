@@ -167,6 +167,15 @@ async function main() {
         }
     });
 
+    //////////Adding the functionality of mute and unmute volume
+    document.querySelector(".volumebtn").addEventListener("click", () => {
+        currentSong.muted = !currentSong.muted;
+
+        // Optional: Change the icon or text of the button
+        document.querySelector(".volumebtn").src = currentSong.muted ? "assets/mute.svg" : "assets/volume.svg";
+    });
+
+
 
 
 

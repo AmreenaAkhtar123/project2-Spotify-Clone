@@ -297,8 +297,12 @@ body {
 
 .songTime {
     position: absolute;
-    right: 32px;
+    right: 50px;
     top: 6px;
+}
+.volume {
+    position: absolute;
+    right: 12px;
 }
 
 .hamburger {
