@@ -39,7 +39,8 @@ const playMusic = (track, pause = false) => {
     }
     
 
-    document.querySelector(".songInfo").innerHTML = track
+    document.querySelector(".songInfo").innerHTML = track.replace(".mp3", "").replaceAll("%20", " ");
+
 
     document.querySelector(".songTime").innerHTML = "00:00/00:00"
 }
@@ -51,8 +52,10 @@ async function main() {
     let songs = await getSongs()
     // console.log(songs);
     playMusic(songs[0], true)
+    
     ///Show all the songs in the play list....
     let songUL = document.querySelector(".songlist").getElementsByTagName("ul")[0]
+    
     for (const song of songs) {
         songUL.innerHTML = songUL.innerHTML + `<li><img class="invert" src="assets/music.svg" alt="">
 
@@ -68,8 +71,10 @@ async function main() {
                             </div>
                             
                         </li>`;
+                        
 
     }
+    
 
     //Attach an event listener to each song 
     Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach(e => {
@@ -121,6 +126,14 @@ async function main() {
     document.querySelector(".close").addEventListener("click", ()=>{
         document.querySelector(".left").style.left = "-120%"
     })
+
+    //////////
+    ////////////
+    currentSong.addEventListener("ended", () => {
+    playSong.src = "assets/play.svg";
+    // Optionally: play next track automatically
+});
+
 
 }
 
