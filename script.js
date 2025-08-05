@@ -1,13 +1,18 @@
 console.log("Lets start javascript");
 let currentSong = new Audio();
+let songs;
 
 ////function for converting seconds into minutes
 function formatTime(seconds) {
-  const mins = Math.floor(seconds / 60);
-  const secs = Math.floor(seconds % 60);
-  
-  const formatted = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-  return formatted;
+    if (isNaN(seconds)) {
+        return "00:00";
+    }
+
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+
+    const formatted = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    return formatted;
 }
 /////////////////////////
 
@@ -33,11 +38,11 @@ async function getSongs() {
 const playMusic = (track, pause = false) => {
     // let audio = new Audio("/songs/" + track)
     currentSong.src = "/songs/" + track
-    if (!pause){
+    if (!pause) {
         currentSong.play()
         playSong.src = "assets/pause.svg"
     }
-    
+
 
     document.querySelector(".songInfo").innerHTML = track.replace(".mp3", "").replaceAll("%20", " ");
 
@@ -47,15 +52,15 @@ const playMusic = (track, pause = false) => {
 
 
 async function main() {
-    
+
     ////For getting the list of all the songs
-    let songs = await getSongs()
+    songs = await getSongs()
     // console.log(songs);
     playMusic(songs[0], true)
-    
+
     ///Show all the songs in the play list....
     let songUL = document.querySelector(".songlist").getElementsByTagName("ul")[0]
-    
+
     for (const song of songs) {
         songUL.innerHTML = songUL.innerHTML + `<li><img class="invert" src="assets/music.svg" alt="">
 
@@ -71,10 +76,10 @@ async function main() {
                             </div>
                             
                         </li>`;
-                        
+
 
     }
-    
+
 
     //Attach an event listener to each song 
     Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach(e => {
@@ -87,52 +92,82 @@ async function main() {
 
     //Attact an event listener to previous, play and next button////
 
-    playSong.addEventListener("click", ()=>{
-        if (currentSong.paused){
+    playSong.addEventListener("click", () => {
+        if (currentSong.paused) {
             currentSong.play()
             playSong.src = "assets/pause.svg"
         }
-        else{
+        else {
             currentSong.pause()
             playSong.src = "assets/play.svg"
         }
-    } )
+    })
 
     //Adding an event listener for time update/////
-    currentSong.addEventListener("timeupdate", ()=>{
+    currentSong.addEventListener("timeupdate", () => {
         // console.log(currentSong.currentTime, currentSong.duration);
 
         document.querySelector(".songTime").innerHTML = `${formatTime(currentSong.currentTime)}/${formatTime(currentSong.duration)}`
 
-        document.querySelector(".circle").style.left = (currentSong.currentTime/ currentSong.duration)*100 + "%"
+        document.querySelector(".circle").style.left = (currentSong.currentTime / currentSong.duration) * 100 + "%"
     })
 
     ////Adding an event listener to the seekbar
 
-    document.querySelector(".seekbar").addEventListener("click", e=>{
-        let percent = e.offsetX/e.target.getBoundingClientRect().width *100 
+    document.querySelector(".seekbar").addEventListener("click", e => {
+        let percent = e.offsetX / e.target.getBoundingClientRect().width * 100
         document.querySelector(".circle").style.left = percent + "%";
 
-        currentSong.currentTime = ((currentSong.duration)*percent)/100;
+        currentSong.currentTime = ((currentSong.duration) * percent) / 100;
 
     })
 
     /////Adding an event listener to the hamburger
-    document.querySelector(".hamburger").addEventListener("click", ()=>{
+    document.querySelector(".hamburger").addEventListener("click", () => {
         document.querySelector(".left").style.left = "0"
     })
 
     ///Adding the event listener to the close
-    document.querySelector(".close").addEventListener("click", ()=>{
+    document.querySelector(".close").addEventListener("click", () => {
         document.querySelector(".left").style.left = "-120%"
     })
 
     //////////
     ////////////
+
+    ////////////////Making the prev and next button interactive
+    next.addEventListener("click", () => {
+        let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0]);
+        if (index < songs.length - 1) {
+            playMusic(songs[index + 1]);
+        } else {
+            playMusic(songs[0]);
+        }
+    });
+
+    previous.addEventListener("click", () => {
+        let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0]);
+        if (index > 0) {
+            playMusic(songs[index - 1]);
+        } else {
+            // Optional: jump to last song
+            playMusic(songs[songs.length - 1]);
+        }
+    });
+
+
+
     currentSong.addEventListener("ended", () => {
-    playSong.src = "assets/play.svg";
-    // Optionally: play next track automatically
-});
+        let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0]);
+        if (index < songs.length - 1) {
+            playMusic(songs[index + 1]);
+        } else {
+            // Optionally restart the playlist or pause
+            playMusic(songs[0]);
+        }
+    });
+
+
 
 
 }

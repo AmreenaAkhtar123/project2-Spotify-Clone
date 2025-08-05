@@ -323,11 +323,11 @@ body {
     }
 
     .right {
-        width: 100vw;
+        width: calc(100vw - 110px);
     }
 
     .playbar {
-        width: 88vw;
+        width: calc(100vw - 75px);
     }
 
     .seekbar {
@@ -344,6 +344,34 @@ body {
 
     .buttons {
         display: flex;
+    }
+    .card {
+        width: 90vw;
+    }
+
+    .card-container {
+        margin: 0px;
+        justify-content: center;
+    }
+
+    .aboveBar {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        position: static; /* Optional: If you want it to flow naturally */
+    }
+
+    /* Remove absolute positioning so the flex works */
+    .songInfo,
+    .songbuttons,
+    .songTime {
+        position: static;
+        text-align: center;
+    }
+
+    .songbuttons {
+        margin-bottom: 10px;
     }
 
 }
