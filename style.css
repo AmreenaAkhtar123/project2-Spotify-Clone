@@ -163,8 +163,8 @@ body {
     justify-content: center;
     padding-top: 0px;
     position: absolute;
-    bottom: 83px;
-    RIGHT: 19PX;
+    bottom: 107px;
+    RIGHT: 30px;
     opacity: var(--a);
     transition: all 1s ease-out;
 
