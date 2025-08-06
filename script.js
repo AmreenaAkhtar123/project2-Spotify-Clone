@@ -1,6 +1,7 @@
-console.log("Lets start javascript");
+// console.log("Lets start javascript");
 let currentSong = new Audio();
 let songs;
+let currfolder;
 
 ////function for converting seconds into minutes
 function formatTime(seconds) {
@@ -18,49 +19,24 @@ function formatTime(seconds) {
 
 //Function to fetch songs//////////
 
-async function getSongs() {
+async function getSongs(folder) {
+    currfolder = folder;
 
-    let a = await fetch("http://127.0.0.1:3000/songs/")
+    let a = await fetch(`http://127.0.0.1:3000/${folder}/`)
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
     let as = div.getElementsByTagName("a")
-    let songs = []
+    songs = []
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
         if (element.href.endsWith(".mp3")) {
-            songs.push(element.href.split("/songs/")[1])
+            songs.push(element.href.split(`/${folder}/`)[1])
         }
     }
-    return songs
-}
-
-const playMusic = (track, pause = false) => {
-    // let audio = new Audio("/songs/" + track)
-    currentSong.src = "/songs/" + track
-    if (!pause) {
-        currentSong.play()
-        playSong.src = "assets/pause.svg"
-    }
-
-
-    document.querySelector(".songInfo").innerHTML = track.replace(".mp3", "").replaceAll("%20", " ");
-
-
-    document.querySelector(".songTime").innerHTML = "00:00/00:00"
-}
-
-
-async function main() {
-
-    ////For getting the list of all the songs
-    songs = await getSongs()
-    // console.log(songs);
-    playMusic(songs[0], true)
-
-    ///Show all the songs in the play list....
+        ///Show all the songs in the play list....
     let songUL = document.querySelector(".songlist").getElementsByTagName("ul")[0]
-
+    songUL.innerHTML = ""
     for (const song of songs) {
         songUL.innerHTML = songUL.innerHTML + `<li><img class="invert" src="assets/music.svg" alt="">
 
@@ -89,6 +65,33 @@ async function main() {
         })
 
     });
+    return songs
+}
+
+const playMusic = (track, pause = false) => {
+    // let audio = new Audio("/songs/" + track)
+    currentSong.src = `/${currfolder}/` + track
+    if (!pause) {
+        currentSong.play()
+        playSong.src = "assets/pause.svg"
+    }
+
+
+    document.querySelector(".songInfo").innerHTML = track.replace(".mp3", "").replaceAll("%20", " ");
+
+
+    document.querySelector(".songTime").innerHTML = "00:00/00:00"
+}
+
+
+async function main() {
+
+    ////For getting the list of all the songs
+    await getSongs("songs/ncs")
+    // console.log(songs);
+    playMusic(songs[0], true)
+
+
 
     //Attact an event listener to previous, play and next button////
 
@@ -169,38 +172,47 @@ async function main() {
 
     //////////Adding the functionality of mute and unmute volume
     ////////// Volume slider, mute toggle and dynamic fill ////////
-const volumeSlider = document.getElementById("volumeSlider");
-const volumeIcon = document.querySelector(".volumebtn");
+    const volumeSlider = document.getElementById("volumeSlider");
+    const volumeIcon = document.querySelector(".volumebtn");
 
-// Handle volume input
-volumeSlider.addEventListener("input", () => {
-    currentSong.volume = volumeSlider.value;
+    // Handle volume input
+    volumeSlider.addEventListener("input", () => {
+        currentSong.volume = volumeSlider.value;
 
-    // Update background fill color
-    const val = volumeSlider.value * 100;
-    volumeSlider.style.background = `linear-gradient(to right, #9a8c98 ${val}%, #white ${val}%)`;
+        // Update background fill color
+        const val = volumeSlider.value * 100;
+        volumeSlider.style.background = `linear-gradient(to right, white ${val}%, #white ${val}%)`;
 
-    // Change icon based on volume
-    if (currentSong.volume == 0) {
-        currentSong.muted = true;
-        volumeIcon.src = "assets/mute.svg";
-    } else {
-        currentSong.muted = false;
-        volumeIcon.src = "assets/volume.svg";
-    }
-});
+        // Change icon based on volume
+        if (currentSong.volume == 0) {
+            currentSong.muted = true;
+            volumeIcon.src = "assets/mute.svg";
+        } else {
+            currentSong.muted = false;
+            volumeIcon.src = "assets/volume.svg";
+        }
+    });
 
-// Toggle mute/unmute
-volumeIcon.addEventListener("click", () => {
-    currentSong.muted = !currentSong.muted;
+    // Toggle mute/unmute
+    volumeIcon.addEventListener("click", () => {
+        currentSong.muted = !currentSong.muted;
 
-    volumeIcon.src = currentSong.muted ? "assets/mute.svg" : "assets/volume.svg";
+        volumeIcon.src = currentSong.muted ? "assets/mute.svg" : "assets/volume.svg";
 
-    // Visually reflect muted state
-    volumeSlider.value = currentSong.muted ? 0 : currentSong.volume || 1;
-    const val = volumeSlider.value * 100;
-    volumeSlider.style.background = `linear-gradient(to right, #9a8c98 ${val}%, #ddd ${val}%)`;
-});
+        // Visually reflect muted state
+        volumeSlider.value = currentSong.muted ? 0 : currentSong.volume || 1;
+        const val = volumeSlider.value * 100;
+        volumeSlider.style.background = `linear-gradient(to right, white ${val}%, #ddd ${val}%)`;
+    });
+    ////////////Load the playlist whenever card is clicked
+    Array.from(document.getElementsByClassName("card")).forEach(e=>{
+        // console.log(e);
+        e.addEventListener("click", async item =>{
+            songs = await getSongs(`songs/${item.currentTarget.dataset.folder}`)
+            
+        })
+    })
+
 
 
 
