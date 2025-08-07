@@ -37,6 +37,8 @@ body {
     position: relative;
 }
 
+
+
 .logo {
     display: flex;
     justify-content: space-between;
@@ -110,11 +112,18 @@ body {
     ;
 }
 
+.spotifyPlaylists {
+    min-height: 560px;
+    max-height: 670px;
+    overflow: auto;
+}
+
 
 .spotifyPlaylists h1 {
     padding: 16px;
     padding-left: 40px;
-    padding-top: 40px;
+    padding-top: 30px;
+    padding-bottom: 0px;
 }
 
 .artistsList h1 {
@@ -125,35 +134,44 @@ body {
 
 .card-container {
     margin: 30px;
+    margin-bottom: 10px;
     display: -webkit-box;
     gap: 10px;
     flex-wrap: nowrap;
     overflow-x: auto;
-    scrollbar-width: none;      /* Firefox */
-    -ms-overflow-style: none;   /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
 }
 
 .card-container::-webkit-scrollbar {
-    display: none;              /* Chrome, Safari */
+    display: none;
+    /* Chrome, Safari */
 }
 
 
 .artist-card-container {
-    margin: 30px;
+    margin-top: 20px;
+    margin-bottom: 10px;
     display: -webkit-box;
     gap: 10px;
     flex-wrap: nowrap;
     overflow-x: auto;
-    scrollbar-width: none;      /* Firefox */
-    -ms-overflow-style: none;   /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
 }
+
 .artist-card-container::-webkit-scrollbar {
-    display: none;              /* Chrome, Safari */
+    display: none;
+    /* Chrome, Safari */
 }
 
 
 .card {
-    width: 200px;
+    width: 160px;
     padding: 10px;
     border-radius: 5px;
     background-color: #252525;
@@ -165,10 +183,11 @@ body {
     width: 200px;
     padding: 10px;
     border-radius: 5px;
-    background-color:none;
+    background-color: none;
     position: relative;
     transition: all .9s;
 }
+
 .artist-card:hover {
     cursor: pointer;
     --a: 1;
@@ -198,6 +217,7 @@ body {
     width: 100%;
     object-fit: contain;
     border-radius: 100px;
+    height: 200px;
 }
 
 
@@ -320,7 +340,8 @@ body {
 }
 
 .songlist {
-    height: 430px;
+    min-height: 400px;
+    max-height: 450px;
     overflow: auto;
     margin-bottom: 10px;
 }
@@ -516,6 +537,6 @@ body {
     .card-container {
         padding-top: 10px;
         max-height: 80vw;
-        
+
     }
 }

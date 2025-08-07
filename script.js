@@ -34,6 +34,7 @@ async function getSongs(folder) {
             songs.push(element.href.split(`/${folder}/`)[1])
         }
     }
+    
     ///Show all the songs in the play list....
     let songUL = document.querySelector(".songlist").getElementsByTagName("ul")[0]
     songUL.innerHTML = ""
@@ -41,7 +42,14 @@ async function getSongs(folder) {
         songUL.innerHTML = songUL.innerHTML + `<li><img class="invert" src="assets/music.svg" alt="">
 
                             <div class="info">
-                                <div>${song}</div>
+                                <div class="song-name" title="${decodeURIComponent(song.replace('.mp3', '').replaceAll('_', ' '))}">
+  ${decodeURIComponent(song.replace('.mp3', '').replaceAll('_', ' ')).length > 35 
+    ? decodeURIComponent(song.replace('.mp3', '').replaceAll('_', ' ')).slice(0, 30) + '...'
+    : decodeURIComponent(song.replace('.mp3', '').replaceAll('_', ' '))}
+</div>
+
+
+
                                 <div>Amreena</div>
                             </div>
 
@@ -77,7 +85,12 @@ const playMusic = (track, pause = false) => {
     }
 
 
-    document.querySelector(".songInfo").innerHTML = track.replace(".mp3", "").replaceAll("%20", "");
+    const cleanTitle = decodeURIComponent(track.replace(".mp3", "").replaceAll("_", " "));
+document.querySelector(".songInfo").innerHTML = cleanTitle.length > 35 
+    ? cleanTitle.slice(0, 32) + "..." 
+    : cleanTitle;
+document.querySelector(".songInfo").title = cleanTitle;  // optional: tooltip with full name
+
 
 
     document.querySelector(".songTime").innerHTML = "00:00/00:00"
