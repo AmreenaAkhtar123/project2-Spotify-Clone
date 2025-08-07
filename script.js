@@ -126,7 +126,7 @@ async function displayAlbums() {
                     </svg>
                 </div>
                 <img src="/songs/${folder}/cover.jpg" alt="">
-                <h2>${response.title}</h2>
+                <h3>${response.title}</h3>
                 <p>${response.description}</p>
             </div>`;
 
@@ -176,7 +176,7 @@ async function displayArtist() {
 
                         </div>
                 <img src="/albums/${folder}/cover.jpg" alt="">
-                <h2>${response.title}</h2>
+                <h3>${response.title}</h3>
                 <p>${response.description}</p>
             </div>`;
 

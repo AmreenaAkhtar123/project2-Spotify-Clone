@@ -119,7 +119,7 @@ body {
 }
 
 
-.spotifyPlaylists h1 {
+.spotifyPlaylists h2 {
     padding: 16px;
     padding-left: 40px;
     padding-top: 30px;
@@ -133,6 +133,7 @@ body {
 }
 
 .card-container {
+    
     margin: 30px;
     margin-bottom: 10px;
     display: -webkit-box;
@@ -152,6 +153,8 @@ body {
 
 
 .artist-card-container {
+    margin-left: 20px;
+    margin-right: 20px;
     margin-top: 20px;
     margin-bottom: 10px;
     display: -webkit-box;
@@ -174,7 +177,7 @@ body {
     width: 160px;
     padding: 10px;
     border-radius: 5px;
-    background-color: #252525;
+    /* background-color: #252525; */
     position: relative;
     transition: all .9s;
 }
@@ -215,9 +218,11 @@ body {
 
 .artist-card img {
     width: 100%;
-    object-fit: contain;
+    object-fit: fill;
     border-radius: 100px;
     height: 200px;
+    width: 180px;
+    height: 180px;
 }
 
 
@@ -495,8 +500,15 @@ body {
         margin: 0px;
         justify-content: center;
         max-height: 60vw;
-    }
+        margin-left: 20px;
+        margin-right: 20px;
 
+        
+    }
+    .artist-card-container{
+        margin-left: 20px;
+        margin-right: 20px;
+    }
     .aboveBar {
         display: flex;
         flex-direction: column;
