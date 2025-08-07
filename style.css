@@ -113,16 +113,44 @@ body {
 
 .spotifyPlaylists h1 {
     padding: 16px;
+    padding-left: 40px;
+    padding-top: 40px;
+}
+
+.artistsList h1 {
+    padding: 16px;
+    padding-left: 40px;
+    padding-top: 40px;
 }
 
 .card-container {
     margin: 30px;
-    display: flex;
+    display: -webkit-box;
     gap: 10px;
-    flex-wrap: wrap;
-    overflow-y: auto;
-    max-height: 65vh;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;      /* Firefox */
+    -ms-overflow-style: none;   /* Internet Explorer 10+ */
 }
+
+.card-container::-webkit-scrollbar {
+    display: none;              /* Chrome, Safari */
+}
+
+
+.artist-card-container {
+    margin: 30px;
+    display: -webkit-box;
+    gap: 10px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;      /* Firefox */
+    -ms-overflow-style: none;   /* Internet Explorer 10+ */
+}
+.artist-card-container::-webkit-scrollbar {
+    display: none;              /* Chrome, Safari */
+}
+
 
 .card {
     width: 200px;
@@ -131,6 +159,19 @@ body {
     background-color: #252525;
     position: relative;
     transition: all .9s;
+}
+
+.artist-card {
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color:none;
+    position: relative;
+    transition: all .9s;
+}
+.artist-card:hover {
+    cursor: pointer;
+    --a: 1;
 }
 
 .card:hover {
@@ -153,6 +194,13 @@ body {
     border-radius: 10px;
 }
 
+.artist-card img {
+    width: 100%;
+    object-fit: contain;
+    border-radius: 100px;
+}
+
+
 .play {
     width: 40px;
     height: 40px;
@@ -164,6 +212,24 @@ body {
     padding-top: 0px;
     position: absolute;
     bottom: 107px;
+    RIGHT: 30px;
+    opacity: var(--a);
+    transition: all 1s ease-out;
+
+
+}
+
+.artist-play {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #1fdf64;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0px;
+    position: absolute;
+    bottom: 80px;
     RIGHT: 30px;
     opacity: var(--a);
     transition: all 1s ease-out;
@@ -393,7 +459,7 @@ body {
     }
 
     .card {
-        width: 30vw;
+        width: 13vw;
     }
 
     .play {
@@ -407,6 +473,7 @@ body {
     .card-container {
         margin: 0px;
         justify-content: center;
+        max-height: 60vw;
     }
 
     .aboveBar {
@@ -441,12 +508,14 @@ body {
 
 }
 
-@media (max-width: 810px) {
+@media (max-width: 820px) {
     .card {
-        width: 60vw;
+        width: 40vw;
     }
 
     .card-container {
         padding-top: 10px;
+        max-height: 80vw;
+        
     }
 }
