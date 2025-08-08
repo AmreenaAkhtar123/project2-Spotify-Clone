@@ -96,7 +96,7 @@ document.querySelector(".songInfo").title = cleanTitle;  // optional: tooltip wi
     document.querySelector(".songTime").innerHTML = "00:00/00:00"
 }
 
-async function displayAlbums() {
+async function displayTrendingSongs() {
     let a = await fetch(`http://127.0.0.1:3000/songs/`)
     let response = await a.text();
     let div = document.createElement("div")
@@ -194,6 +194,56 @@ async function displayArtist() {
     })
 }
 
+async function displayAlbum() {
+    let a = await fetch(`http://127.0.0.1:3000/albums&singlesong/`);
+    let response = await a.text();
+    let div = document.createElement("div");
+    div.innerHTML = response;
+    let anchors = div.getElementsByTagName("a");
+    let cardContainer = document.querySelector(".album-container");
+
+    let array = Array.from(anchors);
+    for (let index = 0; index < array.length; index++) {
+        const e = array[index];
+
+        if (e.href.includes("/albums&singlesong")) {
+            let folder = e.href.split("/").slice(-2)[0];
+
+            // Fetch album info
+            let metaFetch = await fetch(`http://127.0.0.1:3000/albums&singlesong/${folder}/info.json`);
+            let albumInfo = await metaFetch.json();
+
+            // Optional: Trim long titles/descriptions
+            let title = albumInfo.title.length > 35 ? albumInfo.title.slice(0, 32) + "..." : albumInfo.title;
+            let description = albumInfo.description.length > 60 ? albumInfo.description.slice(0, 57) + "..." : albumInfo.description;
+
+            // Append card
+            cardContainer.innerHTML += `
+                <div data-folder="${folder}" class="album-card">
+                    <div class="play">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="black" width="24" height="24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
+                        </svg>
+                    </div>
+                    <img src="/albums&singlesong/${folder}/cover.jpg" alt="${albumInfo.title}">
+                    <h3 title="${albumInfo.title}">${title}</h3>
+                    <p title="${albumInfo.description}">${description}</p>
+                </div>
+            `;
+        }
+    }
+
+    // Attach event listeners to each album card
+    Array.from(document.getElementsByClassName("album-card")).forEach(e => {
+        e.addEventListener("click", async item => {
+            songs = await getSongs(`albums&singlesong/${item.currentTarget.dataset.folder}`);
+            playMusic(songs[0]);
+        });
+    });
+}
+
 
 async function main() {
 
@@ -204,8 +254,9 @@ async function main() {
     
 
     ////Display all the albums on the page
-    displayAlbums();
+    displayTrendingSongs();
     displayArtist();
+    displayAlbum();
 
 
 
