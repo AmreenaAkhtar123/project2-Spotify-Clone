@@ -1,0 +1,125 @@
+.spotify-footer {
+  color: #fff; /* White text */
+  padding: 40px 20px 20px;
+  border-top: 1px solid #282828; /* Top border line added */
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  border-bottom: 1px solid #282828;
+  padding-bottom: 20px;
+}
+
+.footer-column {
+  flex: 1 1 150px;
+  margin-bottom: 20px;
+}
+
+.footer-column h4 {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #a7a7a7;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-column ul li a:hover {
+  text-decoration: underline;
+}
+
+.social-icons {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-icons a {
+  color: #fff;
+  font-size: 18px;
+  background-color: #222;
+  padding: 10px;
+  border-radius: 50%;
+  text-align: center;
+  display: inline-block;
+  transition: background 0.3s;
+}
+
+.social-icons a:hover {
+  background-color: #1db954; /* Spotify green */
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 15px auto 0;
+  font-size: 12px;
+  color: #a7a7a7;
+}
+
+
+/*  */
+.footer-links-language {
+        position: absolute;
+    bottom: 100px;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 20px;
+  padding-top: 20px;
+  color: #a7a7a7;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: #a7a7a7;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.language-selector {
+        margin-top: 50px;
+    width: 100px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #a7a7a7;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.language-selector svg {
+  fill: #fff;
+}
+
+.language-selector span {
+  font-size: 14px;
+  color: #fff;
+}
+

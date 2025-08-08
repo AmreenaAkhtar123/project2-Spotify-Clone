@@ -371,6 +371,10 @@ async function main() {
         const val = volumeSlider.value * 100;
         volumeSlider.style.background = `linear-gradient(to right, white ${val}%, #ddd ${val}%)`;
     });
+
+    
+
+    
     
 
 }

@@ -7,6 +7,7 @@
     <link rel="icon" href="assets/favicon.ico">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="utility.css">
+    <link rel="stylesheet" href="footer.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,44 +47,45 @@
                     </ul>
                 </div>
 
-                <div class="footer">
-                    <div>
-                        <a href="https://www.spotify.com/pk-en/legal/">
-                            <span>Legal</span>
-                        </a>
+
+                <div class="footer-links-language">
+                    <div class="footer-links">
+                        <a href="#">Legal</a>
+                        <a href="#">Safety & Privacy Center</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Cookies</a>
+                        <a href="#">About Ads</a>
+                        <a href="#">Accessibility</a>
+                        <a href="#">Cookies</a>
                     </div>
-                    <div>
-                        <a href="https://www.spotify.com/pk-en/safetyandprivacy/">
-                            <span>Safety &amp; Privacy Center</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="https://www.spotify.com/pk-en/legal/privacy-policy/">
-                            <span>Privacy Policy</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="https://www.spotify.com/pk-en/legal/cookies-policy/">
-                            <span>Cookies</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="https://www.spotify.com/pk-en/legal/privacy-policy/#s3">
-                            <span>About Ads</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="https://www.spotify.com/pk-en/accessibility/">
-                            <span>Accessibility</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a draggable="false" href="https://www.spotify.com/legal/cookies-policy/" target="_blank"
-                            rel="noopener">
-                            <span>Cookies</span>
-                        </a>
+
+                    <div class="language-selector">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white">
+                            <path d="M12 0C5.371 0 0 5.371 0 12c0 
+               6.629 5.371 12 12 12s12-5.371 
+               12-12C24 5.371 18.629 0 12 
+               0zm9.93 11h-3.024c-.134-2.587-1.006-4.962-2.414-6.846 
+               2.527 1.165 4.335 3.657 4.438 
+               6.846zM12 2c1.993 0 3.822.746 
+               5.207 1.974C15.55 5.114 14.134 
+               7.392 13.953 10H10.05C9.869 
+               7.392 8.453 5.114 6.793 
+               3.974A9.954 9.954 0 0112 
+               2zm-3.514 2.154C9.987 5.038 
+               10.868 6.951 11.05 9H5.094c.314-2.093 
+               1.327-3.958 2.392-4.846zM2.07 
+               13h3.024c.134 2.587 1.006 4.962 
+               2.414 6.846-2.527-1.165-4.335-3.657-4.438-6.846zM12 
+               22c-1.993 0-3.822-.746-5.207-1.974 1.657-1.14 
+               3.073-3.418 3.254-6.026h3.903c.181 2.608 
+               1.597 4.886 3.257 6.026A9.954 9.954 0 0112 
+               22zm3.514-2.154c-1.099-.888-2.015-2.801-2.197-4.846h5.956c-.313 
+               2.093-1.327 3.958-2.392 4.846z" />
+                        </svg>
+                        <span>English</span>
                     </div>
                 </div>
+
             </div>
 
 
@@ -106,6 +108,22 @@
                                 stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </div>
+
+                </div>
+
+                <div class="search-container">
+
+                    <!-- Search Icon -->
+
+                    <img src="https://img.icons8.com/ios-glyphs/30/ffffff/search.png" alt="Search">
+
+                    <!-- Input Field -->
+                    <input type="text" class="search-input" placeholder="What do you want to play?">
+
+                    <!-- Right Icon -->
+                    <img class="right-icon" src="https://img.icons8.com/ios-glyphs/30/ffffff/downloads.png"
+                        alt="Right Icon">
+
 
                 </div>
                 <div class="buttons">
@@ -149,10 +167,10 @@
                 </div>
 
                 <!-- Making the third section  -->
-                 <h2>Popular albums & singles</h2>
+                <h2>Popular albums & singles</h2>
 
                 <div class="album-container">
-                     <!-- <div class="album-card">
+                    <!-- <div class="album-card">
                         <div class="play">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="black" width="24" height="24">
@@ -166,51 +184,116 @@
                         <p>Hits to boost your mood and fill you with happiness!</p>
 
                     </div> -->
-                    
 
 
-                </div>
-
-                
-
-
-            </div>
-        
-
-
-        <div class="playbar">
-            <div class="seekbar">
-                <div class="circle">
 
                 </div>
-            </div>
 
-            <div class="aboveBar flex">
-                <div class="songInfo">
+                <!-- Footer -->
+                <footer class="spotify-footer">
 
-                </div>
-                <div class="songbuttons invert">
-                    <img id="previous" src="assets/prevsong.svg" alt="">
-                    <img id="playSong" src="assets/play.svg" alt="">
-                    <img id="next" src="assets/nextsong.svg" alt="">
-                </div>
+                    <div class="footer-container">
+                        <div class="footer-column">
+                            <h4>Company</h4>
+                            <ul>
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Jobs</a></li>
+                                <li><a href="#">For the Record</a></li>
+                            </ul>
+                        </div>
 
-                <div class="controls-right">
-                    <div class="songTime">
+                        <div class="footer-column">
+                            <h4>Communities</h4>
+                            <ul>
+                                <li><a href="#">For Artists</a></li>
+                                <li><a href="#">Developers</a></li>
+                                <li><a href="#">Advertising</a></li>
+                                <li><a href="#">Investors</a></li>
+                                <li><a href="#">Vendors</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-column">
+                            <h4>Useful links</h4>
+                            <ul>
+                                <li><a href="#">Support</a></li>
+                                <li><a href="#">Free Mobile App</a></li>
+                                <li><a href="#">Popular by Country</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-column">
+                            <h4>Spotify Plans</h4>
+                            <ul>
+                                <li><a href="#">Premium Individual</a></li>
+                                <li><a href="#">Premium Duo</a></li>
+                                <li><a href="#">Premium Family</a></li>
+                                <li><a href="#">Premium Student</a></li>
+                                <li><a href="#">Spotify Free</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="social-icons">
+                            <a>
+                                <img src="assets/instagram.svg" alt="instagram">
+                                <i class="fab fa-instagram"></i></a>
+                            <a>
+                                <img src="assets/twitter.svg" alt="twitter">
+                                <i class="fab fa-twitter"></i></a>
+                            <a>
+                                <img src="assets/facebook.svg" alt=""><i class="fab fa-facebook-f"></i></a>
+                        </div>
                     </div>
-                    <div class="volume">
-                        <img class="volumebtn invert" src="assets/volume.svg" alt="">
-                        <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01"
-                            value="1">
+
+                    <div class="footer-bottom">
+                        <p>© 2025 Spotify AB</p>
                     </div>
-                </div>
+                </footer>
+
+                <!-- Font Awesome for icons -->
+                <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+
 
 
             </div>
 
 
+
+            <div class="playbar">
+                <div class="seekbar">
+                    <div class="circle">
+
+                    </div>
+                </div>
+
+                <div class="aboveBar flex">
+                    <div class="songInfo">
+
+                    </div>
+                    <div class="songbuttons invert">
+                        <img id="previous" src="assets/prevsong.svg" alt="">
+                        <img id="playSong" src="assets/play.svg" alt="">
+                        <img id="next" src="assets/nextsong.svg" alt="">
+                    </div>
+
+                    <div class="controls-right">
+                        <div class="songTime">
+                        </div>
+                        <div class="volume">
+                            <img class="volumebtn invert" src="assets/volume.svg" alt="">
+                            <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01"
+                                value="1">
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
         </div>
-    </div>
 
 
 

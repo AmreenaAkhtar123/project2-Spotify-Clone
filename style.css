@@ -32,12 +32,10 @@ body {
 .right {
     width: 75vw;
     margin: 16px 0;
-    min-height: 100vh;
+    min-height: 0vh;
     ;
     position: relative;
 }
-
-
 
 .logo {
     display: flex;
@@ -85,26 +83,10 @@ body {
     min-height: 82.5vh;
 }
 
-.footer {
-    position: relative;
-    display: flex;
-    font-size: 10px;
-    color: gray;
-    gap: 13px;
-    position: absolute;
-    bottom: 30px;
-    width: 35px;
-}
-
-.footer a {
-    color: gray;
-    padding: 10px 0px;
-}
-
 .header {
     display: flex;
     justify-content: space-between;
-    background-color: rgb(34, 34, 34)
+    background-color: rgb(30, 29, 29)
 }
 
 .header>* {
@@ -113,8 +95,8 @@ body {
 }
 
 .spotifyPlaylists {
-    min-height: 600px;
-    max-height: 0px;
+    min-height: 0px;
+    max-height: 580px;
     overflow: auto;
 }
 
@@ -314,7 +296,7 @@ body {
 }
 
 .signupbtn {
-    background-color: rgb(34, 34, 34);
+    background-color: #121212;
     color: rgb(156, 148, 148);
     height: 40px;
     width: 90px;
@@ -354,8 +336,8 @@ body {
 .playbar {
     position: fixed;
     margin-left: 10px;
-    bottom: 10px;
-    background-color: rgb(0, 77, 0);
+    bottom: 30px;
+    background: linear-gradient(90deg, #af2896, #509bf5);
     width: 70vw;
     padding: 12px;
     border-radius: 5px;
@@ -393,8 +375,8 @@ body {
 }
 
 .songlist {
-    min-height: 400px;
-    max-height: 450px;
+    min-height: 0px;
+    max-height: 326px;
     overflow: auto;
     margin-bottom: 10px;
 }
@@ -495,6 +477,48 @@ body {
     align-items: center;
     gap: 13px;
 }
+
+
+.search-container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  background-color: #121212;
+  border-radius: 60px;
+  padding: 6px 12px;
+  width: 450px;
+  height: 40px;
+  margin-top: 10px;
+}
+
+.search-container img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.search-input {
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  flex: 1;
+  font-size: 14px;
+}
+
+.search-input::placeholder {
+  color: #9f9f9f;
+}
+
+.right-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin-left: 18px;
+}
+
+
 
 @media (max-width: 1400px) {
     .left {
