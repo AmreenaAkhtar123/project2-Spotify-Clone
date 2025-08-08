@@ -36,6 +36,7 @@ async function getSongs(folder) {
     }
     
     ///Show all the songs in the play list....
+    
     let songUL = document.querySelector(".songlist").getElementsByTagName("ul")[0]
     songUL.innerHTML = ""
     for (const song of songs) {
@@ -50,7 +51,7 @@ async function getSongs(folder) {
 
 
 
-                                <div>Amreena</div>
+                                <div>Spotify</div>
                             </div>
 
                             <div class="playNow">

@@ -9,8 +9,8 @@
 }
 
 body {
-    background-color: white;
-    color: black;
+    background-color:black;
+    color: white;
 }
 
 .container-navbar {
@@ -489,6 +489,7 @@ body {
   width: 450px;
   height: 40px;
   margin-top: 10px;
+
 }
 
 .search-container img {
@@ -546,6 +547,9 @@ body {
 
     .hamburger {
         display: block;
+    }
+    .search-container{
+        display: none;
     }
 
     .close {
